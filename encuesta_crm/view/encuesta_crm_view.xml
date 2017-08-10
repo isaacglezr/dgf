@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="encuesta_crm_view" model="ir.ui.view">
+            <field name="name">res.partner_encuesta_crm_view.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="x_cmt_cualessuactividadprincipal" />
+                    <field name="x_perfilconfirmado" />
+                    <field name="x_cmt_medioseentero" />
+                    <field name="x_cmt_otromedio" attrs="{'invisible':[('x_cmt_medioseentero', '!=', 6)]}"/>
+                    <field name="x_region"/>
+                </xpath>
+                <xpath expr="//field[@name='property_payment_term_id']" position="after">
+                    <field name="x_term_pago" />
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="x_tipoDeCliente" />
+                </xpath>
+                <notebook position="inside">
+                    <page string="INFORMACIÓN COMPLEMENTARIA">
+                        <group>
+                        <group string="INFORMACION">
+                        <!--USUARIO FINAL --> 
+                            <field name="x_cmt_productosquproduceoalm" widget="Many2one" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 10)]}"/>
+                            <field name="x_cmt_certifi" widget="Many2one" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 10)]}"/>
+                            <field name="x_cmt_nivelvendesuproducto" widget="Many2one" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 10)]}"/>
+                        <!-- PROYECTISTA -->
+    			    <field name="x_cmt_tambienconstruye" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 30)]}"/>
+			    <field name="x_cmt_seespecializaenalimentaria" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 30)]}"/>
+			    <field name="x_tipodeclientesatiende" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 30)]}"/>
+		        <!-- PROFESIONAL TECNICO -->
+			    <field name="x_tipodeclientesatiende" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 20)]}"/>
+			    <field name="x_cmt_cuentaconpersonalproftec" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 20)]}"/>
+			    <field name="x_cmt_distribuyepanel" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 20)]}"/>
+			    <field name="x_cmt_cualmarcadepanel" attrs="{'invisible':[('x_cmt_distribuyepanel', '!=', True)]}"/>
+                        <!-- CONTRATISTA -->
+			    <field name="x_contr_cuentacnpersonal" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 40)]}"/>
+			    <field name="x_contr_distripanel" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 40)]}"/>
+			    <field name="x_contr_esdistdepanel" default="False" attrs="{'invisible':['|',('x_contr_distripanel', '=', False),('x_cmt_cualessuactividadprincipal', '!=', 40)]}"/>
+			    <field name="x_contr_esdistrideotras" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 40)]}"/>
+			    <field name="x_contr_marcasdeotras" default="False" attrs="{'invisible':['|',('x_contr_esdistrideotras', '=', False),('x_cmt_cualessuactividadprincipal', '!=', 40)]}"/>
+                        <!-- DISTRIBUIDOR -->
+			    <field name="x_distpanel" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 60)]}"/>
+			    <field name="x_cmt_solovendeotmbninstala" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 60)]}"/>
+			    <field name="x_cmt_tienepersonaldeventas" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 60)]}"/>
+			    <field name="x_cmt_cuenta_con_bodegas_o_sucursales" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 60)]}"/>
+                        <!-- FABRICANTE -->
+			    <field name="x_tiposdebienesque" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 70)]}"/>
+			    <field name="x_cmt_instalacionesfabriles" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 70)]}"/>
+			    <field name="x_cmt_tipodedistribuidor" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 70)]}"/>
+			    <field name="x_cmt_nivelvendesuproducto" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 70)]}"/>  
+	       		<!-- AGENTE DE NEGOCIOS -->
+   			    <field name="x_cmt_productosymarcasquerepresenta" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 80)]}"/>
+    			    <field name="x_aquenivelvendeagente" attrs="{'invisible':[('x_cmt_cualessuactividadprincipal', '!=', 80)]}"/>
+			</group>
+                        <group string=" ">
+                        </group>
+                        </group>
+                         <!--   <field name="x_"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_comprobantedomicilio"/>
+                            <field name="x_navintha_documentos_comprobantedomicilio"/>
+                            <br/>
+ 
+                            <label for="x_navintha_documentos_curp"/>
+                            <field name="x_navintha_documentos_curp"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_cv"/>
+                            <field name="x_navintha_documentos_cv"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_comprobanteestudios"/>
+                            <field name="x_navintha_documentos_comprobanteestudios"/>-->
+                       <!-- </div>-->
+                    </page>                   
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

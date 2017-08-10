@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="lead_fields_view" model="ir.ui.view">
+            <field name="name">crm.lead_lead_fields_view.inherited</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="x_cmt_quienhizolallamada"/>
+                    <field name="x_cmt_interested"/>
+                </xpath>
+                <xpath expr="//field[@name='priority']" position="after">
+                    <field name="x_cmt_fasedeproyecto" />
+                    <field name="x_cmt_projecttype" />
+                    <field name="x_cmt_certificacion" />
+                    <field name="x_cmt_productoleinteresa" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
