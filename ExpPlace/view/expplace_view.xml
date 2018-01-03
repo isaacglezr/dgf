@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="expplace_field_view" model="ir.ui.view">
+            <field name="name">account.invoice_expplace_field_view.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="x_Expedicion"/>                
+            </xpath>  
+            </field>
+        </record>    
+    </data>
+</odoo>
