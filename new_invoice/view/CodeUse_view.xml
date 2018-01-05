@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="codeuse_field_view" model="ir.ui.view">
+            <field name="name">account.invoice_codeuse_field_view.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_edi_usage']" position="after">
+                <field name="x_UseCode" readonly="1"/>                
+            </xpath>  
+            </field>
+        </record>    
+    </data>
+</odoo>
